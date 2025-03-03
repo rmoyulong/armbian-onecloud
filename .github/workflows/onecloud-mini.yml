@@ -1,4 +1,4 @@
-name: onecloud
+name: onecloud-mini
 
 on:
   workflow_dispatch:
@@ -6,7 +6,7 @@ on:
     branches:
       - master
     paths:
-      - .github/workflows/onecloud.yml
+      - .github/workflows/onecloud-mini.yml
 
 env:
   SCRIPT_REPO: ${{ github.repository }}
@@ -129,7 +129,7 @@ jobs:
       fail-fast: false
       matrix:
         BRANCH:
-          #- edge
+         # - edge
           - current
 
     steps:
@@ -190,7 +190,7 @@ jobs:
       fail-fast: false
       matrix:
         BRANCH:
-          #- edge
+         # - edge
           - current
         RELEASE:
           #- focal # Ubuntu 20.04 LTS          
@@ -203,7 +203,7 @@ jobs:
           #- sid # Debian unstable
         TYPE:
           - minimal
-          - cli
+          #- cli
           #- desktop
     steps:
       - name: Import env
@@ -211,7 +211,7 @@ jobs:
           echo "$(echo "${{ needs.prepare.outputs.env }}" | base64 -d)" >>$GITHUB_ENV
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         with:
           repository: ${{ env.ARMBIAN_REPO }}
           ref: ${{ env.ARMBIAN_SHA }}
