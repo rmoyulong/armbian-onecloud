@@ -192,11 +192,14 @@ jobs:
           - current
         RELEASE:
           # - focal # Ubuntu 20.04 LTS
-          - jammy # Ubuntu 22.04 LTS
-          # - lunar # Ubuntu 23.04
+          # - jammy # Ubuntu 22.04 LTS
+          - noble # Ubuntu 24.04 LTS
+          - oracular # Ubuntu 24.10
+          - plucky # Ubuntu 25.04
           # - buster # Debian 10
-          - bullseye # Debian 11
+          # - bullseye # Debian 11
           - bookworm # Debian 12
+          - trixie # Debian 13
           - sid # Debian unstable
         TYPE:
           - minimal
@@ -207,9 +210,6 @@ jobs:
             DESKTOP_ENVIRONMENT: xfce
             DESKTOP_ENVIRONMENT_CONFIG_NAME: config_base
             DESKTOP_APPGROUPS_SELECTED: ""
-        exclude:
-          - RELEASE: sid
-            TYPE: desktop
 
     steps:
       - name: Import env
